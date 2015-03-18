@@ -16,8 +16,8 @@ bin: $(OBJS)
 build/%.o: src/%.java
 	@mkdir -p $(dir $@)
 	$(GCJ) $(JFLAGS) -c $^ -o $@
-	#workaround for https://stackoverflow.com/questions/2567230/gcj-creates-duplicate-dummy-symbol
-	objcopy -L '_ZGr8_$$_dummy' $@
+	@objcopy -L '_ZGr8_$$_dummy' $@
+#workaround for https://stackoverflow.com/questions/2567230/gcj-creates-duplicate-dummy-symbol
 
 build/%.class: src/%.java
 	@mkdir -p $(dir $@)
