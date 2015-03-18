@@ -24,5 +24,5 @@ build/%.class: src/%.java
 .PHONY: clean
 
 clean:
-	rm -rf build/
+	rm -rf build/*
 
