@@ -1,15 +1,25 @@
 include config.mk
 
-default: all
+default: help
 
-all: build/main
+help:
+	echo either use target jar or bin.
 
-build/main: $(OBJS)
-	@mkdir -p dist/;cd build;mkdir -p META-INF/;echo "Main-Class: $(MAINCLASS)" > META-INF/MANIFEST.MF;zip -ru ../dist/main.jar *
+all: jar bin
+
+jar: $(CLSS)
+	@cd build;mkdir -p META-INF/;echo "Main-Class: $(MAINCLASS)" > META-INF/MANIFEST.MF;zip -ru ../dist/main.jar *
+
+bin: $(OBJS)
+	$(GCJ) $(JFLAGS) --main=$(MAINCLASS) -o dist/main $^
+
+build/%.o: src/%.java
+	@mkdir -p $(dir $@)
+	$(GCJ) $(JFLAGS) -c $^
 
 build/%.class: src/%.java
 	@mkdir -p $(dir $@)
-	$(JAVAC) $(JFLAGS) $^
+	$(GCJ) $(JFLAGS) -C -d build/ $^
 
 .PHONY: clean
 
