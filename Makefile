@@ -15,7 +15,7 @@ bin: $(OBJS)
 
 build/%.o: src/%.java
 	@mkdir -p $(dir $@)
-	$(GCJ) $(JFLAGS) -c $^
+	$(GCJ) $(JFLAGS) -c $^ -o $@
 
 build/%.class: src/%.java
 	@mkdir -p $(dir $@)
