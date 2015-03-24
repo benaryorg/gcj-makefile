@@ -10,3 +10,4 @@ OBJS=$(addprefix build/,$(addsuffix .o,$(basename $(SRCS:$(CLASSPATH)%=%))))
 JARS=$(shell find $(RESPATH) -iname '*.jar')
 
 JFLAGS:=-I$(CLASSPATH) $(addprefix -I,$(shell find $(RESPATH) -iname '*.jar'))
+
