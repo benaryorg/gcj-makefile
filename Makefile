@@ -3,7 +3,7 @@ include config.mk
 default: help
 
 help:
-	echo either use target jar or bin.
+	@echo either use target jar or bin.
 
 all: jar bin
 
